@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Husky Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Light blue for snowy theme */
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            color: #4682b4; /* Steel blue */
+        }
+
+        #fact-container {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            transition: transform 0.3s ease;
+        }
+
+        #new-fact-btn, #twitter-btn {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #4682b4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #new-fact-btn:hover, #twitter-btn:hover {
+            background-color: #5a9bd4;
+        }
+
+        @media (max-width: 600px) {
+            #fact-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Discover the World of Huskies</h1>
+    </header>
+    <main>
+        <div id="fact-container">
+            <p id="fact"></p>
+        </div>
+        <button id="new-fact-btn">Get a Random Fact</button>
+        <button id="twitter-btn">Share on Twitter</button>
+    </main>
+    <script>
+        const facts = [
+            "Huskies are known for their striking blue eyes, but they can also have brown, green, or even one of each.",
+            "The Siberian Husky was originally bred by the Chukchi people in Siberia as a sled dog.",
+            "Huskies have a double coat that helps them withstand extremely cold temperatures.",
+            "They are known for their incredible endurance and can run long distances without tiring.",
+            "Huskies are very social and enjoy the company of other dogs and humans.",
+            "They have a strong prey drive and may chase small animals if not properly trained.",
+            "Huskies are known for their vocal nature and can 'talk' or howl rather than bark.",
+            "They are escape artists and can often find ways to get out of fenced areas.",
+            "Huskies have a unique metabolism that allows them to efficiently use energy, making them excellent sled dogs.",
+            "They are one of the oldest dog breeds, with a history dating back thousands of years.",
+            "Huskies are known for their friendly and gentle temperament, making them great family pets.",
+            "They have a wolf-like appearance but are not closely related to wolves.",
+            "Huskies are highly intelligent and require mental stimulation to prevent boredom.",
+            "They are known for their beautiful and varied coat colors, including black, gray, red, and agouti.",
+            "Huskies have webbed feet, which help them move efficiently through snow."
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const factElement = document.getElementById('fact');
+            const newFactBtn = document.getElementById('new-fact-btn');
+            const twitterBtn = document.getElementById('twitter-btn');
+
+            // Display the first fact on page load
+            factElement.textContent = facts[0];
+
+            // Function to get a random fact
+            function getRandomFact() {
+                const randomIndex = Math.floor(Math.random() * (facts.length - 1)) + 1;
+                factElement.textContent = facts[randomIndex];
+            }
+
+            // Event listener for the new fact button
+            newFactBtn.addEventListener('click', getRandomFact);
+
+            // Event listener for the Twitter button
+            twitterBtn.addEventListener('click', () => {
+                const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(factElement.textContent)}`;
+                window.open(twitterUrl, '_blank');
+            });
+        });
+    </script>
+</body>
+</html>
